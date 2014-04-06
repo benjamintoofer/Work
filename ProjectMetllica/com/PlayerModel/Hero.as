@@ -1,0 +1,1 @@
+﻿package  com.PlayerModel{		import com.PlayerModel.PlayerModel;		public class Hero extends PlayerModel{		public function Hero() {			// constructor code		}	}	}

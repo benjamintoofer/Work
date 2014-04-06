@@ -1,0 +1,1 @@
+﻿package  com.Utils{		import flash.display.Stage;	import com.PlayerModel.PlayerModel;		public class StageBoundery {		public function StageBoundery() {			// constructor code		}		public static function checkFloor(object:PlayerModel,stageRef:Stage):void		{			if(object.myBottom > stageRef.stageHeight)			{				trace("hello");			}		}	}	}
