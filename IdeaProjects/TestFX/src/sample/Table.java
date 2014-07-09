@@ -3,7 +3,6 @@ package sample;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import javafx.scene.paint.Color;
-import javafx.event.*;
 
 
 /**
@@ -14,24 +13,25 @@ public class Table extends Pane {
     //private enum colorType{RED,BLUE,GREEN,YELLOW};
 
     private GridCell[][] tableGrid;
-    private Circle [][] circleLocation;
+    private Circle [][] circleArray;
     private int numRows = TestConstants.NUM_ROW;
     private int numCols = TestConstants.NUM_COL;
     private int colWidth = TestConstants.SCENE_WIDTH/numCols;
     private int rowWidth = TestConstants.SCENE_HEIGHT/numRows;
     private int tableHeight = TestConstants.SCENE_HEIGHT;
     private int tableWidth = TestConstants.SCENE_WIDTH;
+    private boolean cellSelected = false;
 
 
     public Table()
     {
         tableGrid = new GridCell[numRows][numCols];
-        circleLocation = new Circle[numRows][numCols];
+        circleArray = new Circle[numRows][numCols];
         drawTable();
         assignValueToCell();
         checkIntroSetup();
 
-        this.setOnMouseClicked(new CellClickedEvent());
+        this.setOnMouseClicked(new CellClickedEvent(this));
     }
 
     private void assignValueToCell()
@@ -64,7 +64,7 @@ public class Table extends Pane {
                 Circle circle = new Circle((j * colWidth) + (colWidth)*.5,(i * rowWidth) + (rowWidth)*.5,rowWidth/4);
                 circle.setFill(colorChoice(tableGrid[i][j].colorNumber));
                 circle.setStroke(Color.BLACK);
-                circleLocation[i][j] = circle;
+                circleArray[i][j] = circle;
                 this.getChildren().add(circle);
 
 
@@ -88,7 +88,7 @@ public class Table extends Pane {
                     {
                         System.out.println("changed horz at "+i+" "+j);
                         currentCell.colorNumber++;
-                        circleLocation[i][j].setFill(colorChoice(currentCell.colorNumber));
+                        circleArray[i][j].setFill(colorChoice(currentCell.colorNumber));
                     }
                 }
                 if(currentCell.getTop() != null && currentCell.getBottom() != null)
@@ -97,7 +97,7 @@ public class Table extends Pane {
                     {
                         System.out.println("changed vert at "+i+" "+j);
                         currentCell.colorNumber++;
-                        circleLocation[i][j].setFill(colorChoice(currentCell.colorNumber));
+                        circleArray[i][j].setFill(colorChoice(currentCell.colorNumber));
                     }
                 }
 
@@ -110,7 +110,7 @@ public class Table extends Pane {
       //Draw Rows
       for(int i = 1;i <= numRows; i++)
       {
-          Line line = new Line(10,i * colWidth,tableWidth,i * colWidth);
+          Line line = new Line(0,i * colWidth,tableWidth,i * colWidth);
           line.setStroke(Color.BLUE);
           line.setStrokeWidth(1);
           this.getChildren().add(line);
@@ -119,7 +119,7 @@ public class Table extends Pane {
      //Draw Columns
       for(int i = 1; i <= numCols; i++)
       {
-          Line line = new Line(i * rowWidth,10,i * rowWidth,tableHeight);
+          Line line = new Line(i * rowWidth,0,i * rowWidth,tableHeight);
           line.setStroke(Color.BLUE);
           line.setStrokeWidth(1);
           this.getChildren().add(line);
@@ -157,4 +157,20 @@ public class Table extends Pane {
       return color;
     }
 
+    public void setCellSelected(boolean selected)
+    {
+        this.cellSelected = selected;
+    }
+    public boolean getCellSelected()
+    {
+        return cellSelected;
+    }
+    public Circle[][] getCircleList()
+    {
+        return circleArray;
+    }
+    public GridCell[][] getTableGrid()
+    {
+        return tableGrid;
+    }
 }
