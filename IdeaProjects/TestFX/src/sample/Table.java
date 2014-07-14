@@ -3,6 +3,7 @@ package sample;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.*;
 import javafx.scene.paint.Color;
+import javafx.concurrent.Task;
 
 
 /**
@@ -13,23 +14,34 @@ public class Table extends Pane {
     //private enum colorType{RED,BLUE,GREEN,YELLOW};
 
     private GridCell[][] tableGrid;
-    private Circle [][] circleArray;
+    private Fruit [][] fruitArray;
+
+
     private int numRows = TestConstants.NUM_ROW;
     private int numCols = TestConstants.NUM_COL;
     private int colWidth = TestConstants.SCENE_WIDTH/numCols;
     private int rowWidth = TestConstants.SCENE_HEIGHT/numRows;
     private int tableHeight = TestConstants.SCENE_HEIGHT;
     private int tableWidth = TestConstants.SCENE_WIDTH;
+
+    private Fruit selectedCell,cellToSwitch;
     private boolean cellSelected = false;
+    private AnimationThread gameThread;
 
 
     public Table()
     {
         tableGrid = new GridCell[numRows][numCols];
-        circleArray = new Circle[numRows][numCols];
+        fruitArray = new Fruit[numRows][numCols];
+
+
+
         drawTable();
         assignValueToCell();
         checkIntroSetup();
+
+        gameThread = new AnimationThread(this);
+        gameThread.start();
 
         this.setOnMouseClicked(new CellClickedEvent(this));
     }
@@ -64,7 +76,7 @@ public class Table extends Pane {
                 Circle circle = new Circle((j * colWidth) + (colWidth)*.5,(i * rowWidth) + (rowWidth)*.5,rowWidth/4);
                 circle.setFill(colorChoice(tableGrid[i][j].colorNumber));
                 circle.setStroke(Color.BLACK);
-                circleArray[i][j] = circle;
+                fruitArray[i][j] = new Fruit(circle,i,j);
                 this.getChildren().add(circle);
 
 
@@ -88,7 +100,7 @@ public class Table extends Pane {
                     {
                         System.out.println("changed horz at "+i+" "+j);
                         currentCell.colorNumber++;
-                        circleArray[i][j].setFill(colorChoice(currentCell.colorNumber));
+                        fruitArray[i][j].getFruit().setFill(colorChoice(currentCell.colorNumber));
                     }
                 }
                 if(currentCell.getTop() != null && currentCell.getBottom() != null)
@@ -97,7 +109,7 @@ public class Table extends Pane {
                     {
                         System.out.println("changed vert at "+i+" "+j);
                         currentCell.colorNumber++;
-                        circleArray[i][j].setFill(colorChoice(currentCell.colorNumber));
+                        fruitArray[i][j].getFruit().setFill(colorChoice(currentCell.colorNumber));
                     }
                 }
 
@@ -165,12 +177,33 @@ public class Table extends Pane {
     {
         return cellSelected;
     }
-    public Circle[][] getCircleList()
+    public Fruit[][] getFruitList()
     {
-        return circleArray;
+        return fruitArray;
+    }
+    public void setFruitinArray(int row,int col,Fruit fruit)
+    {
+        fruitArray[row][col] = fruit;
     }
     public GridCell[][] getTableGrid()
     {
         return tableGrid;
     }
+    public Fruit getSelectedCell()
+    {
+        return selectedCell;
+    }
+    public void setSelectedCell(Fruit cell)
+    {
+        selectedCell = cell;
+    }
+    public Fruit getCellToSwitch()
+    {
+        return cellToSwitch;
+    }
+    public void setCellToSwitch(Fruit cell)
+    {
+        cellToSwitch = cell;
+    }
+
 }

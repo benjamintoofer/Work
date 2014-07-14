@@ -39,7 +39,7 @@ public class CellClickedEvent implements EventHandler<MouseEvent> {
         boxXPoints[0] = colIndexClicked * colWidth;
         boxXPoints[1] = colIndexClicked * colWidth + (colWidth);
 
-        if(!myPane.getCellSelected())
+        if(!myPane.getCellSelected() && myPane.getSelectedCell() == null)
         {
             rowIndexHold = rowIndexClicked;
             colIndexHold = colIndexClicked;
@@ -54,13 +54,32 @@ public class CellClickedEvent implements EventHandler<MouseEvent> {
             box.setStrokeWidth(2.5);
             myPane.getChildren().add(box);
             myPane.setCellSelected(true);
+
+            //Set cell that is selected
+            if(myPane.getSelectedCell() == null)
+            {
+                myPane.setSelectedCell(myPane.getFruitList()[rowIndexHold][colIndexHold]);
+            }
+
+
+
         }else if(myPane.getTableGrid()[rowIndexHold][colIndexHold].getRight() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked]
               || myPane.getTableGrid()[rowIndexHold][colIndexHold].getLeft() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked]
               || myPane.getTableGrid()[rowIndexHold][colIndexHold].getBottom() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked]
               || myPane.getTableGrid()[rowIndexHold][colIndexHold].getTop() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked])
         {
             System.out.println("Switch!");
+            //Set second cell selected
+            if(myPane.getCellToSwitch() == null)
+            {
+                myPane.setCellToSwitch(myPane.getFruitList()[rowIndexClicked][colIndexClicked]);
+                myPane.getChildren().remove(box);
+                myPane.setCellSelected(false);
+            }
+
         }else{
+            myPane.setSelectedCell(null);
+            myPane.setCellToSwitch(null);
             myPane.getChildren().remove(box);
             myPane.setCellSelected(false);
         }
