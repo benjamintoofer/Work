@@ -30,7 +30,7 @@ public class Fruit {
     }
     public void setGridXPos(double xPos)
     {
-        gridXPos =xPos;
+        gridXPos = xPos;
     }
     public void setGridYPos(double yPos)
     {

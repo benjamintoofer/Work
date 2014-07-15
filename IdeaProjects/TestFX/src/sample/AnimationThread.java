@@ -10,6 +10,8 @@ public class AnimationThread extends Thread {
 
     private Table myPane;
     private boolean runThread;
+    private double speed = TestConstants.SWITCH_SPEED;
+
 
     public AnimationThread(Table myPane)
     {
@@ -64,16 +66,15 @@ public class AnimationThread extends Thread {
     {
         if(horizontalSwitch)
         {
-            if(myPane.getSelectedCell().getFruit().getCenterX() < cellSwitchX)//Switch center with right
+            if(myPane.getSelectedCell().getFruit().getCenterX() < (cellSwitchX - speed) )//Switch center with right
             {
-                //System.out.println(myPane.getSelectedCell().getCenterX());
-                myPane.getSelectedCell().getFruit().setCenterX(myPane.getSelectedCell().getFruit().getCenterX() + 1);
-                myPane.getCellToSwitch().getFruit().setCenterX(myPane.getCellToSwitch().getFruit().getCenterX() - 1);
+                myPane.getSelectedCell().getFruit().setCenterX(myPane.getSelectedCell().getFruit().getCenterX() + speed);
+                myPane.getCellToSwitch().getFruit().setCenterX(myPane.getCellToSwitch().getFruit().getCenterX() - speed);
 
-            }else if(myPane.getSelectedCell().getFruit().getCenterX() > cellSwitchX)//Switch center with left
+            }else if(myPane.getSelectedCell().getFruit().getCenterX() > (cellSwitchX + speed))//Switch center with left
             {
-                myPane.getSelectedCell().getFruit().setCenterX(myPane.getSelectedCell().getFruit().getCenterX() - 1);
-                myPane.getCellToSwitch().getFruit().setCenterX(myPane.getCellToSwitch().getFruit().getCenterX() + 1);
+                myPane.getSelectedCell().getFruit().setCenterX(myPane.getSelectedCell().getFruit().getCenterX() - speed);
+                myPane.getCellToSwitch().getFruit().setCenterX(myPane.getCellToSwitch().getFruit().getCenterX() + speed);
 
             }else{
                 //set new xPos on Grid
@@ -81,13 +82,19 @@ public class AnimationThread extends Thread {
                 double tempX = myPane.getSelectedCell().getGridXPos();
                 Fruit tempFruit = myPane.getFruitList()[myPane.getSelectedCell().getRowIndex()][myPane.getSelectedCell().getColIndex()];
 
-                //switch positions in array
-                myPane.setFruitinArray(tempFruit.getRowIndex(),tempFruit.getColIndex(),myPane.getCellToSwitch());
-                myPane.setFruitinArray(myPane.getCellToSwitch().getRowIndex(),myPane.getCellToSwitch().getColIndex(),tempFruit);
+                myPane.getFruitList()[myPane.getSelectedCell().getRowIndex()][myPane.getSelectedCell().getColIndex()].getFruit().setCenterX(cellSwitchX);
+                myPane.getFruitList()[myPane.getCellToSwitch().getRowIndex()][myPane.getCellToSwitch().getColIndex()].getFruit().setCenterX(cellSelectedX);
 
                 //Switch Grid position
                 myPane.getSelectedCell().setGridXPos(cellSwitchX);
                 myPane.getCellToSwitch().setGridXPos(tempX);
+
+
+
+
+                //switch positions in array
+                myPane.setFruitinArray(tempFruit.getRowIndex(),tempFruit.getColIndex(),myPane.getCellToSwitch());
+                myPane.setFruitinArray(myPane.getCellToSwitch().getRowIndex(),myPane.getCellToSwitch().getColIndex(),tempFruit);
 
                 //Set new Grid index
                 System.out.println("selected cell index: "+myPane.getSelectedCell().getRowIndex()+" "+myPane.getSelectedCell().getColIndex());
@@ -101,16 +108,16 @@ public class AnimationThread extends Thread {
 
         }else{
 
-            if(myPane.getSelectedCell().getFruit().getCenterY() < cellSwitchY)//Switch center with right
+            if(myPane.getSelectedCell().getFruit().getCenterY() < (cellSwitchY - speed))//Switch center with right
             {
                 //System.out.println(myPane.getSelectedCell().getCenterX());
-                myPane.getSelectedCell().getFruit().setCenterY(myPane.getSelectedCell().getFruit().getCenterY() + 1);
-                myPane.getCellToSwitch().getFruit().setCenterY(myPane.getCellToSwitch().getFruit().getCenterY() - 1);
+                myPane.getSelectedCell().getFruit().setCenterY(myPane.getSelectedCell().getFruit().getCenterY() + speed);
+                myPane.getCellToSwitch().getFruit().setCenterY(myPane.getCellToSwitch().getFruit().getCenterY() - speed);
 
-            }else if(myPane.getSelectedCell().getFruit().getCenterY() > cellSwitchY)//Switch center with left
+            }else if(myPane.getSelectedCell().getFruit().getCenterY() > (cellSwitchY + speed))//Switch center with left
             {
-                myPane.getSelectedCell().getFruit().setCenterY(myPane.getSelectedCell().getFruit().getCenterY() - 1);
-                myPane.getCellToSwitch().getFruit().setCenterY(myPane.getCellToSwitch().getFruit().getCenterY() + 1);
+                myPane.getSelectedCell().getFruit().setCenterY(myPane.getSelectedCell().getFruit().getCenterY() - speed);
+                myPane.getCellToSwitch().getFruit().setCenterY(myPane.getCellToSwitch().getFruit().getCenterY() + speed);
 
             }else{
                 //set new yPos on Grid
@@ -118,13 +125,18 @@ public class AnimationThread extends Thread {
                 double tempY = myPane.getSelectedCell().getGridYPos();
                 Fruit tempFruit = myPane.getFruitList()[myPane.getSelectedCell().getRowIndex()][myPane.getSelectedCell().getColIndex()];
 
-                //switch positions in array
-                myPane.setFruitinArray(tempFruit.getRowIndex(),tempFruit.getColIndex(),myPane.getCellToSwitch());
-                myPane.setFruitinArray(myPane.getCellToSwitch().getRowIndex(),myPane.getCellToSwitch().getColIndex(),tempFruit);
+
+
+                myPane.getFruitList()[myPane.getSelectedCell().getRowIndex()][myPane.getSelectedCell().getColIndex()].getFruit().setCenterY(cellSwitchY);
+                myPane.getFruitList()[myPane.getCellToSwitch().getRowIndex()][myPane.getCellToSwitch().getColIndex()].getFruit().setCenterY(cellSelectedY);
 
                 //Switch Grid position
                 myPane.getSelectedCell().setGridYPos(cellSwitchY);
                 myPane.getCellToSwitch().setGridYPos(tempY);
+
+                //switch positions in array
+                myPane.setFruitinArray(tempFruit.getRowIndex(),tempFruit.getColIndex(),myPane.getCellToSwitch());
+                myPane.setFruitinArray(myPane.getCellToSwitch().getRowIndex(),myPane.getCellToSwitch().getColIndex(),tempFruit);
 
                 //Set new Grid index
                 System.out.println("selected cell index: "+myPane.getSelectedCell().getRowIndex()+" "+myPane.getSelectedCell().getColIndex());

@@ -21,4 +21,7 @@ public interface TestConstants {
     //Table width
     int WIDTH = 100;
 
+    //speed of fruits animating
+    double SWITCH_SPEED = 3;
+
 }

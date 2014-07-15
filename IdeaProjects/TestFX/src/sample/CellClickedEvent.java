@@ -41,6 +41,7 @@ public class CellClickedEvent implements EventHandler<MouseEvent> {
 
         if(!myPane.getCellSelected() && myPane.getSelectedCell() == null)
         {
+
             rowIndexHold = rowIndexClicked;
             colIndexHold = colIndexClicked;
 
@@ -55,6 +56,7 @@ public class CellClickedEvent implements EventHandler<MouseEvent> {
             myPane.getChildren().add(box);
             myPane.setCellSelected(true);
 
+
             //Set cell that is selected
             if(myPane.getSelectedCell() == null)
             {
@@ -63,12 +65,13 @@ public class CellClickedEvent implements EventHandler<MouseEvent> {
 
 
 
-        }else if(myPane.getTableGrid()[rowIndexHold][colIndexHold].getRight() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked]
+        }else if((myPane.getTableGrid()[rowIndexHold][colIndexHold].getRight() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked]
               || myPane.getTableGrid()[rowIndexHold][colIndexHold].getLeft() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked]
               || myPane.getTableGrid()[rowIndexHold][colIndexHold].getBottom() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked]
-              || myPane.getTableGrid()[rowIndexHold][colIndexHold].getTop() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked])
+              || myPane.getTableGrid()[rowIndexHold][colIndexHold].getTop() == myPane.getTableGrid()[rowIndexClicked][colIndexClicked]) )
         {
             System.out.println("Switch!");
+
             //Set second cell selected
             if(myPane.getCellToSwitch() == null)
             {
@@ -77,7 +80,8 @@ public class CellClickedEvent implements EventHandler<MouseEvent> {
                 myPane.setCellSelected(false);
             }
 
-        }else{
+        }else if(myPane.getCellToSwitch() == null){
+            System.out.println("reset");
             myPane.setSelectedCell(null);
             myPane.setCellToSwitch(null);
             myPane.getChildren().remove(box);
