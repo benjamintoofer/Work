@@ -14,11 +14,15 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
 
-        Calculator myCalc = new Calculator(MAX_WIDTH,MAX_HEIGHT);
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        CalculatorView calcView = new CalculatorView(MAX_WIDTH,MAX_HEIGHT);
+        CalculatorModel calcModel = new CalculatorModel();
+        Controller calcController = new Controller(calcView,calcModel);
+
+        //Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(myCalc, MAX_WIDTH, MAX_HEIGHT));
+        primaryStage.setScene(new Scene(calcView, MAX_WIDTH, MAX_HEIGHT));
         primaryStage.show();
+
     }
 
 
