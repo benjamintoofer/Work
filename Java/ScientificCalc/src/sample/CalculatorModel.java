@@ -14,25 +14,25 @@ public class CalculatorModel {
     {
         double result = firstNum;
         //System.out.println(oper);
-        if(oper.equals("button_Plus"))
+        if(oper.equals("+"))
         {
             result = firstNum + secondNum;
 
 
-        }else if(oper.equals("button_Div"))
+        }else if(oper.equals("/"))
         {
             if(secondNum != 0)
             {
                 result = firstNum/secondNum;
             }else{
-
+                System.out.println("cannnot divide by 0");
             }
 
-        }else if(oper.equals("button_Minus"))
+        }else if(oper.equals("-"))
         {
             result = firstNum - secondNum;
 
-        }else if(oper.equals("button_Mult"))
+        }else if(oper.equals("*"))
         {
             result = firstNum * secondNum;
 

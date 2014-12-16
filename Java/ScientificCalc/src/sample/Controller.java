@@ -11,11 +11,17 @@ public class Controller {
     private CalculatorView calcView;
     private CalculatorModel calcModel;
     private String oper = "";
+    private String strOperForEquat = "";
     private String equationStr = "";
+    private String num = "";
     private double result = 0;
     private double firstNum,secondNum,tempNum = 0;
     private int paraCounter = 0;
     private Button btn = new Button();
+    private Equation currentEq;
+
+    private enum calcState  {NUM_STATE,OPER_STATE,FUNC_STATE,EQUAL_STATE}
+    private calcState currentCalcState;
 
     private ArrayList<Equation> equationList;
 
@@ -39,14 +45,19 @@ public class Controller {
         {
             Button btn = (Button)event.getSource();
 
-            //If there are no equations start a new one
-            if(equationList.isEmpty())
-            {
-                equationList.add(new Equation());
-            }
+            currentCalcState = getCalcState(btn);
 
+            switch (currentCalcState)
+            {
+                case NUM_STATE:
+                    buttonPessed(btn);
+                    break;
+                case OPER_STATE:
+                    handleOperation(btn);
+                    break;
+            }
             //check for numInput
-            if(btn.getId().equals("button_0") || btn.getId().equals("button_1") || btn.getId().equals("button_2") ||
+            /*if(btn.getId().equals("button_0") || btn.getId().equals("button_1") || btn.getId().equals("button_2") ||
                     btn.getId().equals("button_3") || btn.getId().equals("button_4") || btn.getId().equals("button_5") ||
                     btn.getId().equals("button_6") || btn.getId().equals("button_7") || btn.getId().equals("button_8") ||
                     btn.getId().equals("button_9") || btn.getId().equals("button_Deci"))
@@ -88,15 +99,22 @@ public class Controller {
                 }else if(calcView.isInputEntered())
                 {
 
+                    //If there are no equations start a new one
+                    if(equationList.isEmpty())
+                    {
+                        equationList.add(new Equation());
+                    }
+
+
+                    Equation currentEq = equationList.get(equationList.size() - 1);
+                    num = calcView.getInputTxt();
 
                     //Add to equation text
                     newTxt = calcView.getEquationStr()+" "+calcView.getInputTxt()+" "+calcModel.getOperationSymbol(oper);
                     calcView.setEquationStr(newTxt);
 
-                    Equation currentEq = equationList.get(equationList.size() - 1);
-                    tempNum = Double.parseDouble(calcView.getInputTxt());
 
-                    currentEq.add(calcModel.getOperationSymbol(oper),tempNum);
+                    currentEq.add(calcModel.getOperationSymbol(oper),num);
 
 
 
@@ -109,10 +127,106 @@ public class Controller {
                     System.out.println("change oper");
 
                 }
+            }*/
+
+
+
+        }
+        private calcState getCalcState(Button btn)
+        {
+            calcState state = null;
+
+            //Number State
+            if(btn.getId().equals("button_0") || btn.getId().equals("button_1") || btn.getId().equals("button_2") ||
+                    btn.getId().equals("button_3") || btn.getId().equals("button_4") || btn.getId().equals("button_5") ||
+                    btn.getId().equals("button_6") || btn.getId().equals("button_7") || btn.getId().equals("button_8") ||
+                    btn.getId().equals("button_9") || btn.getId().equals("button_Deci"))
+            {
+                state = calcState.NUM_STATE;
             }
 
+            //Operation State
+            if(btn.getId().equals("button_Div") || btn.getId().equals("button_Plus") ||
+                    btn.getId().equals("button_Minus") || btn.getId().equals("button_Mult"))
+            {
+                state = calcState.OPER_STATE;
+            }
+
+            //Paranthesis State
+
+            return state;
+        }
+
+        private void handleOperation(Button btn)
+        {
+            if(equationList.isEmpty())
+            {
+                equationList.add(new Equation());
+            }
+
+            if(calcView.isInputEntered())
+            {
+                oper = btn.getId();
 
 
+                currentEq = equationList.get(equationList.size() - 1);
+                num = calcView.getInputTxt();
+
+                //System.out.println(currentEq.getNumSize()+" "+currentEq.getOperSize());
+                System.out.println(currentEq.getTopOper()+" "+currentEq.getOperSize());
+                //check if holding operator has nothing
+
+                if(currentEq.getTopOper().equals("*") || currentEq.getTopOper().equals("/"))
+                {
+
+                    firstNum = Double.parseDouble(num);
+                    secondNum = Double.parseDouble(currentEq.popNum());
+                    strOperForEquat = calcModel.getOperationSymbol(currentEq.popOperTop());
+
+                    newTxt = Double.toString(calcModel.calculateOperation(firstNum,secondNum,strOperForEquat));
+                    System.out.println(newTxt);
+                    currentEq.addNum(newTxt);
+
+                }
+
+                //Add to equation text
+                newTxt = calcView.getEquationStr()+" "+calcView.getInputTxt()+" "+calcModel.getOperationSymbol(oper);
+                calcView.setEquationStr(newTxt);
+
+
+                currentEq.add(calcModel.getOperationSymbol(oper),num);
+
+
+
+                if(currentEq.getNumSize() > 1)
+                {
+                    secondNum = Double.parseDouble(currentEq.popNum());//System.out.println("");
+                    firstNum = Double.parseDouble(currentEq.popNum());//System.out.println(firstNum);
+                    strOperForEquat = currentEq.popOperBottom();//System.out.println(strOperForEquat);
+                    System.out.println(firstNum+"-----"+secondNum);
+                    newTxt = Double.toString(calcModel.calculateOperation(firstNum,secondNum,strOperForEquat));
+                    currentEq.addNum(newTxt);
+                    calcView.setInputTxt(newTxt);
+                }
+
+                calcView.setInputEntered(false);
+                calcView.setOperationPressed(true);
+                calcView.setDecimalPressed(false);
+
+            }else {//If no num input then allow operation change
+                oper = btn.getId();
+
+
+
+                currentEq.popOperTop();
+                currentEq.addOper(calcModel.getOperationSymbol(oper));
+
+
+                newTxt = calcView.getEquationStr().substring(0,calcView.getEquationStr().length() - 1);
+                newTxt += calcModel.getOperationSymbol(oper);
+                calcView.setEquationStr(newTxt);
+
+            }
         }
         private void openNewEquation()
         {
@@ -206,6 +320,8 @@ public class Controller {
                     calcView.setDecimalPressed(true);
                 }
             }
+
+
 
         }
     }
