@@ -11,7 +11,7 @@ public class Main extends Application {
 
     private static final int WIDTH = GameConstants.GAME_WIDTH;
     private static final int HEIGHT = GameConstants.GAME_HEIGHT;
-    private static final int SCALE = GameConstants.GAME_SCALE;
+    private static final int SCALE = GameConstants.FRAME_SCALE;
 
     private Game myGame = new Game(WIDTH,HEIGHT,SCALE);
 

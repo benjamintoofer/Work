@@ -5,11 +5,14 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import toofer.gfx.Screen;
 import toofer.gfx.SpriteSheet;
 import toofer.level.LevelManager;
 import toofer.level.Tile;
+import toofer.toofer.input.KeyDownHandler;
+import toofer.toofer.input.KeyUpHandler;
 
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +37,8 @@ public class Game extends Canvas implements Runnable{
 
     private Screen screen;
 
+    private Player myPlayer;
+
     private boolean running = false;
 
 
@@ -41,7 +46,7 @@ public class Game extends Canvas implements Runnable{
     {
         this.width = width;
         this.height = height;
-        this.scale = GameConstants.GAME_SCALE;
+        this.scale = scale;
 
         init();
     }
@@ -59,8 +64,14 @@ public class Game extends Canvas implements Runnable{
             e.printStackTrace();
         }
 
+        myPlayer = new Player(width/2,height/2,spriteSheet);
         tileArray = new Tile[]{new Tile(Tile.GRASS,spriteSheet),new Tile(Tile.STONE,spriteSheet)};
-        screen = new Screen(levelManager,tileArray);
+        screen = new Screen(levelManager,tileArray,myPlayer);
+
+
+        //Add even handlers
+        this.addEventHandler(KeyEvent.KEY_PRESSED,new KeyDownHandler(myPlayer));
+        this.addEventHandler(KeyEvent.KEY_RELEASED,new KeyUpHandler(myPlayer));
 
         this.setWidth(width * scale);
         this.setHeight(height * scale);
@@ -127,7 +138,7 @@ public class Game extends Canvas implements Runnable{
      */
     public void tick()
     {
-        
+        myPlayer.tick();
     }
 
     public void render()

@@ -84,7 +84,7 @@ public class LevelManager {
                 }
                 levelList.get(levelList.size() - 1).setCol(col);
             }
-
+            //System.out.println(col+" "+row);
             //Getting digits and placing into map array
             for(char c:textInput.toCharArray())
             {

@@ -7,7 +7,9 @@ public class GameConstants {
 
     public static final int SPRITE_WIDTH = 8;
 
-    public static final int GAME_SCALE = 3;
+    public static final int FRAME_SCALE = 3;
+
+    public static final int GAME_SCALE = 10;
 
     public static final int GAME_WIDTH = 200;
 
