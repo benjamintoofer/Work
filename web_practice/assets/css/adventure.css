@@ -1,0 +1,139 @@
+
+body{
+    margin: 0;
+}
+#bg_over_layer{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .7);
+    width: 60%;
+    left: 20%;
+    top: 5%;
+    padding-bottom: 1%;
+}
+
+#main_page{
+    position:fixed;
+    background-image: url('https://static.squarespace.com/static/50bbadeee4b05ce48945b3d7/t/50bf761be4b0e692146dd048/1354724891555/PB150527.JPG');
+    background-position:top left;
+    background-size: cover;
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    min-width: 100vw;
+    width: 100vw;
+    min-height: 100vh;
+    height: 100vh;
+}
+
+#nav_list_items{
+    position: fixed;
+    margin: 30px 0 0 30px
+}
+.nav_item {
+    text-transform: uppercase;
+    font-family: 'Source Sans Pro',Tahoma,Arial,sans-serif;
+    color: white;
+    list-style-type: none;
+}
+
+.nav_item>a{
+    text-decoration: none;
+    font-family: 'Source Sans Pro',Tahoma,Arial,sans-serif;
+    color: white;
+    font-size: 13px;
+    letter-spacing: 4px;
+    line-height: 30px
+}
+
+.nav_item>a:hover{
+    color: rgb(255, 214, 117);
+}
+
+.nav_item>a:active{
+    color: rgb(255, 214, 117);
+}
+
+#center_page_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#center_page_title_container{
+    margin: 20px 0 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#center_page_title a{
+    color: white;
+    font-family: "Voltaire",Georgia,serif;
+    text-transform: uppercase;
+    font-size: 55px;
+    line-height: 55px;
+    font-style: normal;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+}
+#center_page_desc h3{
+    justify-content: center;
+    align-content: center;
+    color: rgb(255, 214, 117);
+    font-family: Georgia,serif;
+    font-style: italic;
+    font-size: 20px;
+}
+
+#photo_gallery_container{
+    background-color: #fbfbfb;
+    min-width: 100%;
+    min-height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#photo_gallery_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+#photo_gallery_title h1{
+    font-family: 'Source Sans Pro',Tahoma,Arial,sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 30px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+#photo_container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
+    width: 728px;
+
+}
+
+.image_container{
+    width: 166px;
+    height: 166px;
+    margin: 8px;
+}
+
+#contact_text{
+    padding: 25px 0 25px 0;
+    font-family: "Source Sans Pro",Tahoma,Arial,sans-serif;
+    font-size: 16;
+    font-weight: 400;
+}
