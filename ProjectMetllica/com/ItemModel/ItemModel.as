@@ -1,1 +1,0 @@
-﻿package  com.ItemModel{		import flash.display.Sprite;	import flash.display.Stage;		public class ItemModel extends Sprite{				private var consumable:Boolean;		var stageRef:Stage;				public function ItemModel(consumable:Boolean) {						this.consumable = consumable;		}	}	}
