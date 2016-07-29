@@ -5,12 +5,15 @@ window.onload = function() {
 
 }
 
+//Init function
 function init()
 {
-    add_click_event_images();
+    add_click_open_overlay();
+    add_click_close_overlay();
 }
 
-function add_click_event_images()
+// Event Handlers
+function add_click_open_overlay()
 {
 
     var list_of_images = $('.image_container');
@@ -19,6 +22,11 @@ function add_click_event_images()
         // img.addEventListener("click",test);
         list_of_images[i].addEventListener("click",open_image);
     }
+}
+
+function add_click_close_overlay()
+{
+    $('exit_bttn').addEventListener("click",close_overlay);
 }
 function open_image()
 {
@@ -42,9 +50,37 @@ function open_overlay()
         var elem = $("photo_page");
         var body = document.getElementsByTagName('body');
         elem.style.visibility = "visible";
+        elem.style.opacity = 1;
         body[0].style.overflow = "hidden";
         // console.log(elem.style.visibility);
 }
+
+function close_overlay()
+{
+    // var elem = $("photo_page");
+    var body = document.getElementsByTagName('body');
+    animate_opacity_close_overlay('photo_page');
+    body[0].style.overflow = "auto";
+}
+function animate_opacity_close_overlay(page_overlay)
+{
+    var overlay = $(page_overlay);
+    var id = setInterval(frame,30);
+    var opac = overlay.style.opacity;
+
+    function frame()
+    {
+        if (opac <= 0) {
+            overlay.style.visibility = 'hidden';
+            clearInterval(id);
+        } else {
+            opac -= .07;
+            overlay.style.opacity = opac;
+        }
+    }
+
+}
+
 function test()
 {
     console.log("CLICKED!");

@@ -125,7 +125,7 @@ head{
 
 #photo_container{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap:wrap;
     width: 98%;
 
@@ -173,6 +173,7 @@ head{
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.965);
 }
+
 #displayed_image_container{
     width: 100vw;
     height: 100vh;
@@ -190,4 +191,17 @@ head{
 #displayed_image img{
     width: auto;
     height: calc(100vh - 5vh);
+}
+
+#exit_bttn{
+    position: absolute;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 26px;
+    /*width: 20px;*/
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    cursor: pointer;
+    color: #ccc;
 }
