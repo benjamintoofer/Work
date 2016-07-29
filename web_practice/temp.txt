@@ -1,0 +1,101 @@
+<div id="bg_over_layer">
+    <div id="center_page_container">
+        <div id="center_page_title_container">
+            <div id="center_page_title">
+                <h1>
+                    <a
+                    href="/Users/benjamintoofer/Documents/GitRepo/web_practice/index.html"
+                    style="display: block">
+                    Wet Desert Expeditions
+                    </a>
+                </h1>
+            </div>
+            <div id="center_page_desc">
+                <h3>
+                    Adventures in the American Southwest
+                </h3>
+            </div>
+        </div>
+        <!--Photo Container-->
+        <div id="photo_gallery_container">
+            <div id="photo_gallery_content">
+                <div id="photo_gallery_title">
+                    <h1>
+                        Adventures
+                    </h1>
+                </div>
+                <div id="photo_container">
+                    <div class="image_container" id="img_1">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c7936ce4b042a91999e1a6/1432180164645/DSC_0329.JPG"  alt=" Rafting on the Kern River " width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_2">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c7936ce4b04521b3cd44a7/1432180163043/P3030065.JPG"  alt=" Death Valley's Eureka Sand Dunes "  width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_3">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c7936ce4b068ff753a838a/1432180163520/P4080116.JPG"  alt=" Rigging for a three week Grand Canyon rafting trip. " width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_4">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c7936ce4b042a91999e1a8/1432180149053/P4100258.JPG"  alt="P4100258.JPG" width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_5">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c7936ce4b042a91999e1a7/1432180154448/P4220061.JPG"  alt="P4220061.JPG"  width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_6">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c7938ee4b0b74fe1ecccf6/1432180136700/P4260619.JPG"  alt="P4260619.JPG"  width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_7">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c794ade4b0292081a855cc/1432180139996/P4260609.JPG"  alt="P4260609.JPG" width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_8">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c797d1e4b04521b3cd50d8/1355257816500/highres_40814371.jpeg"  alt="highres_40814371.jpeg" width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_9">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c7957be4b029005deba4dc/1432180158189/PB170697.JPG"  alt="PB170697.JPG"  width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_10">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c794e2e4b068ff753a886c/1355257092473/P5260173.JPG"  alt="P5260173.JPG" width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_11">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c7951de4b068ff753a88cf/1432180153304/P8140580.JPG"  alt="P8140580.JPG"   width="180px" height="166px" />
+                        </a>
+                    </div>
+                    <div class="image_container" id="img_12">
+                        <a>
+                            <img src="http://static1.squarespace.com/static/50bbadeee4b05ce48945b3d7/50c7936be4b042a91999e1a3/50c7957be4b04521b3cd4946/1432180174139/PB170699.JPG"  alt="PB170699.JPG"  width="180px" height="166px" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="contact_text_container">
+                <div>
+                    Ready to go?
+                </div>
+                <div id="contact_text_link">
+                    <a href="/Users/benjamintoofer/Documents/GitRepo/web_practice/contact.html">Drop us a note</a>
+                </div>
+                .
+            </div>
+        </div>
+    </div>
+</div>
