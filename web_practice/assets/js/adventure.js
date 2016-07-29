@@ -35,10 +35,6 @@ function open_image()
     // var win_height = window.innerHeight;
 
     img_to_display.setAttribute("src", img_src);
-    img_to_display.setAttribute("width",new_width);
-    img_to_display.setAttribute("height",new_height);
-
-    img_to_display_div.style.margin = "2.5%";
 
 }
 function open_overlay()

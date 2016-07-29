@@ -182,4 +182,12 @@ head{
 }
 #displayed_image{
     position: relative;
+    /*margin: 2.5%;*/
+    /*width: auto;*/
+    /*height: calc(100vh - 5%);*/
+}
+
+#displayed_image img{
+    width: auto;
+    height: calc(100vh - 5vh);
 }
