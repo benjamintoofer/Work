@@ -3,17 +3,12 @@ body{
     margin: 0;
 }
 
-head{
-    /*overflow: auto;*/
-}
 #bg_over_layer{
     position:relative;
     background-color: rgba(0, 0, 0, .7);
     width: 60%;
     left: 20%;
     top: 40px;
-    /*margin-left: 20%;*/
-    /*margin-top: 3%;*/
     padding-bottom: 3%;
 }
 
@@ -132,8 +127,6 @@ head{
 }
 
 .image_container{
-    /*width: 180px;*/
-    /*height: 166px;*/
     width: 20% - 8px;
     height: auto;
     margin: 8px;
@@ -207,7 +200,33 @@ head{
     background-color: rgba(0, 0, 0, 0.01);
     transform: translateX(100%);
 }
+#next_image{
+    position: relative;
+}
 
+#next_image img{
+    width: auto;
+    height: calc(100vh - 5vh);
+}
+
+#next_image_container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 100vw;
+}
+
+#next_image_container.move_left{
+    left: 0;
+    transition-delay: 0s;
+    transition-duration: 0.8s;
+    transition-property: transform;
+    transition-timing-function: ease;
+    background-color: rgba(0, 0, 0, 0.01);
+    transform: translateX(-100%);
+}
 #displayed_image{
     position: relative;
 
@@ -234,7 +253,19 @@ head{
     transition-timing-function: ease;
     transform: translateX(100%);
 }
-
+#displayed_image_container.move_left{
+    left: -100vw;
+    transition-delay: 0s;
+    transition-duration: 0.8s;
+    transition-property: transform;
+    transition-timing-function: ease;
+    transform: translateX(-100%);
+}
+#click_screen{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
 .bttn{
     position: absolute;
     font-size: 26px;
@@ -246,6 +277,10 @@ head{
 
 .arrow_bttn{
     opacity: 0;
+}
+
+.arrow_bttn:hover{
+    cursor: pointer;
 }
 #exit_bttn{
     top: 20px;
