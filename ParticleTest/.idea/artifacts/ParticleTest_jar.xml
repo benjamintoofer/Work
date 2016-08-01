@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="ParticleTest:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/ParticleTest_jar</output-path>
-    <root id="archive" name="ParticleTest.jar">
-      <element id="module-output" name="ParticleTest" />
-    </root>
-  </artifact>
-</component>
