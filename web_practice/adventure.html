@@ -4,6 +4,10 @@
         <style>
             @import url('assets/css/adventure.css');
         </style>
+        <script
+			  src="https://code.jquery.com/jquery-3.1.0.slim.js"
+			  integrity="sha256-L6ppAjL6jgtRmfiuigeEE5AwNI2pH/X9IBbPyanJeZw="
+			  crossorigin="anonymous"></script>
         <script type="text/javascript" src="assets/js/adventure.js"></script>
     </head>
     <body>
@@ -125,13 +129,24 @@
         </div>
         <!--PHOTO PAGE-->
         <div id="photo_page">
+            <div id="prev_image_container">
+                <div id="prev_image">
+                    <img />
+                </div>
+            </div>
             <div id="displayed_image_container">
                 <div id="displayed_image">
                     <img />
                 </div>
             </div>
-            <div id="exit_bttn">
+            <div class="bttn" id="exit_bttn">
                 <a>&#x2613;</a>
+            </div>
+            <div class="bttn arrow_bttn" id="right_bttn">
+                >
+            </div>
+            <div class="bttn arrow_bttn" id="left_bttn">
+                <
             </div>
         </div>
         <footer>

@@ -173,19 +173,9 @@ head{
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.965);
 }
-
-#displayed_image_container{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 #displayed_image{
     position: relative;
-    /*margin: 2.5%;*/
-    /*width: auto;*/
-    /*height: calc(100vh - 5%);*/
+
 }
 
 #displayed_image img{
@@ -193,15 +183,92 @@ head{
     height: calc(100vh - 5vh);
 }
 
-#exit_bttn{
+#displayed_image_container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*transition-delay: 0s;
+    transition-duration: 0.8s;
+    transition-property: transform;
+    transition-timing-function: ease;*/
+}
+
+#displayed_image_container.move_right{
+    left: 100vw;
+    transition-delay: 0s;
+    transition-duration: 0.8s;
+    transition-property: transform;
+    transition-timing-function: ease;
+    background-color: green;
+    transform: translateX(75%);
+}
+
+.bttn{
     position: absolute;
     font-size: 26px;
     font-weight: bold;
     line-height: 26px;
-    /*width: 20px;*/
+    cursor: pointer;
+    color: #ccc;
+}
+
+.arrow_bttn{
+    opacity: 0;
+}
+#exit_bttn{
     top: 20px;
     right: 20px;
     z-index: 1;
-    cursor: pointer;
-    color: #ccc;
+}
+#right_bttn{
+    opacity: 0;
+    top: 50vh;
+    right: 6%;
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+
+#left_bttn{
+    opacity: 0;
+    top: 50vh;
+    left: 6%;
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+
+#right_bttn:hover{
+    opacity: 1;
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+
+#right_bttn.mouse_move{
+    opacity: 1;
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+#left_bttn:hover{
+    opacity: 1;
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+}
+
+#left_bttn.mouse_move{
+    opacity: 1;
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    transition-timing-function: ease;
 }
