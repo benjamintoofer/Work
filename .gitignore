@@ -2,3 +2,4 @@
 *.jar
 Java/.metadata/
 *.zip
+.idea/
